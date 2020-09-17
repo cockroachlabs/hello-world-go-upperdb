@@ -14,8 +14,6 @@ insecure-node: clean
 
 bank-database-insecure:
 	cockroach sql --insecure -e 'CREATE USER IF NOT EXISTS maxroach; CREATE DATABASE IF NOT EXISTS bank; GRANT ALL ON DATABASE bank TO maxroach;'
-	cockroach sql --insecure --database bank -e 'CREATE TABLE IF NOT EXISTS accounts (ID SERIAL PRIMARY KEY, balance INT);'
 
 bank-database-secure:
 	cockroach sql --certs-dir=certs -e 'CREATE USER IF NOT EXISTS maxroach; CREATE DATABASE IF NOT EXISTS bank; GRANT ALL ON DATABASE bank TO maxroach;'
-	cockroach sql --certs-dir=certs --database bank -e 'CREATE TABLE IF NOT EXISTS accounts (ID SERIAL PRIMARY KEY, balance INT);'
