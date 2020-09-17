@@ -155,7 +155,7 @@ func main() {
 			return err
 		}
 
-		if time.Now().Sub(startTime) < time.Second*2 {
+		if time.Now().Sub(startTime) < time.Second*1 {
 			// Will fail continuously for 2 seconds.
 			if err = crdbForceRetry(tx); err != nil {
 				return err
