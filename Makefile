@@ -7,10 +7,10 @@ secure-node: clean
 	cockroach cert create-node localhost --certs-dir=certs --ca-key=private/ca.key && \
 	cockroach cert create-client root --certs-dir=certs --ca-key=private/ca.key && \
 	cockroach cert create-client maxroach --certs-dir=certs --ca-key=private/ca.key && \
-	cockroach start --certs-dir=certs
+	cockroach start-single-node --certs-dir=certs
 
 insecure-node: clean
-	cockroach start --insecure
+	cockroach start-single-node --insecure
 
 bank-database-insecure:
 	cockroach sql --insecure -e 'CREATE USER IF NOT EXISTS maxroach; CREATE DATABASE IF NOT EXISTS bank; GRANT ALL ON DATABASE bank TO maxroach;'
